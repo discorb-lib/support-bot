@@ -9,6 +9,10 @@ Dotenv.load
 
 client = Discorb::Client.new(intents: Discorb::Intents.all)
 
+client.once :ready do
+  puts "Logged in as #{client.user}"
+end
+
 client.extend(Evaler)
 client.extend(Dispander)
 client.extend(NoHoist)
