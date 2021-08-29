@@ -11,7 +11,7 @@ module NoHoist
     unhoist_member(after)
   end
 
-  def unhoist_member(member)
+  def self.unhoist_member(member)
     Async do
       if member.name.start_with?("!")
         member.edit(nick: member.name.sub(/^[\s!]+/, ""))
