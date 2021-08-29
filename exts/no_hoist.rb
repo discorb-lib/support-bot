@@ -3,11 +3,11 @@ require "discorb"
 module NoHoist
   extend Discorb::Extension
 
-  event :member_join do |_task, member|
+  event :member_join do |member|
     unhoist_member(member)
   end
 
-  event :member_update do |_task, _before, after|
+  event :member_update do |_before, after|
     unhoist_member(after)
   end
 
