@@ -3,7 +3,7 @@ require "dotenv"
 
 Dotenv.load
 
-client = Discorb::Client.new(intents: Discorb::Intents.all)
+client = Discorb::Client.new(log: File.open("./out.log", "w"), log_level: :debug, intents: Discorb::Intents.all)
 
 client.once :standby do
   puts "Logged in as #{client.user}"
