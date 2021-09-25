@@ -1,19 +1,18 @@
 require "discorb"
-require_relative "exts/eval"
-require_relative "exts/dispander"
-require_relative "exts/no_hoist"
-require_relative "exts/auto_role"
-
 require "dotenv"
 
 Dotenv.load
 
 client = Discorb::Client.new(intents: Discorb::Intents.all)
 
-client.once :ready do
+client.once :standby do
   puts "Logged in as #{client.user}"
 end
 
+load "./exts/auto_role.rb"
+load "./exts/eval.rb"
+load "./exts/dispander.rb"
+load "./exts/no_hoist.rb"
 client.extend(AutoRole)
 client.extend(Evaler)
 client.extend(Dispander)
