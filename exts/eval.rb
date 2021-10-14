@@ -2,18 +2,18 @@
 
 require "discorb"
 
-module Evaler
-  extend Discorb::Extension
+class Evaler
+  include Discorb::Extension
   event :message do |message|
     next if message.author.bot?
-    next unless message.content.start_with?("eval ")
+    next unless message.content.start_with?("s:eval ")
 
     unless message.author.bot_owner?.wait
       message.reply("You don't have permission to use this command.")
       next
     end
 
-    code = message.content.delete_prefix("eval ").delete_prefix("```rb").delete_suffix("```")
+    code = message.content.delete_prefix("s:eval ").delete_prefix("```rb").delete_suffix("```")
     begin
       message.add_reaction(Discorb::UnicodeEmoji["clock3"])
       res = eval("Async { |task| #{code} }.wait", binding, __FILE__, __LINE__) # rubocop:disable Security/Eval

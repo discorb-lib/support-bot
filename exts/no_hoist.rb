@@ -1,8 +1,7 @@
 require "discorb"
 
-module NoHoist
-  extend Discorb::Extension
-
+class NoHoist
+  include Discorb::Extension
   event :member_add do |member|
     unhoist_member(member)
   end
