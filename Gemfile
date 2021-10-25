@@ -8,7 +8,7 @@ git_source(:github) { |repo_name| "https://github.com/#{repo_name}" }
 
 # gem "discorb", "~> 0.0.1", :git => "git@github.com:discorb-lib/discorb"
 
-gem "discorb", "~> 0.11.1"
+gem "discorb", "~> 0.12.3"
 
 gem "async-websocket", "~> 0.19.0"
 gem "async-http", "~> 0.56.5"

@@ -10,11 +10,11 @@ class NoHoist
     unhoist_member(after)
   end
 
-  def self.unhoist_member(member)
-    Async do
-      if member.name.start_with?("!")
-        member.edit(nick: member.name.sub(/^[\s!]+/, ""))
-      end
+  def unhoist_member(member)
+    if member.name.start_with?("!")
+      new_nick = member.name.sub(/^[\s!]+/, "")
+      new_nick = "Deleted due to hoisting" if new_nick.empty?
+      member.edit(nick: new_nick)
     end
   end
 end
